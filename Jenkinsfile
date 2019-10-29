@@ -12,7 +12,7 @@ stages{
         stage('Build'){
             steps {
                 bat 'mvn clean package'
-                bat 'xcopy .\target\*.jar D:\jar'
+                bat 'xcopy ./target/*.jar D:/jar/'
             }
             
         }
