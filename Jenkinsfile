@@ -20,7 +20,7 @@ stages{
             }
             post{
                 success{
-                    bat 'java -jar D:\\fatca-app-0.0.1-SNAPSHOT.jar'
+                    bat 'java -jar D:\\jar\\fatca-app-0.0.1-SNAPSHOT.jar'
                 }
             }
         }
