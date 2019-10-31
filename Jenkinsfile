@@ -2,11 +2,7 @@ pipeline {
     agent any
 
 
-def targetConfug={
-    "DEV": "server1",
-    "UAT": "server1",
-    "PROD":"server3" 
-}
+
 stages{
         stage('init'){
             steps{
