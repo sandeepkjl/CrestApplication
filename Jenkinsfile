@@ -11,11 +11,21 @@ stages{
         }
         stage('Build'){
             steps {
-                bat 'mvn clean package'
-                bat 'xcopy .\\target\\fatca-app-0.0.1-SNAPSHOT.jar D:\\jar'
+                bat 'mvn clean package'              
             }
-            
         }
+        stage('deploy'){
+            steps{
+                bat 'xcopy .\\target\\fatca-app-0.0.1-SNAPSHOT.jar D:\\jar'               
+            }
+            post{
+                success{
+                    bat 'java -jar D:\\jar\\*.jar'
+                }
+            }
+        }
+            
+      
 
 }
 }
