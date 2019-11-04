@@ -9,20 +9,37 @@ stages{
                 echo 'initialization...'
             }
         }
+        stage('compile'){
+            steps{
+                echo 'compiling...'
+            }
+        }
         stage('Build'){
             
             steps {
-                echo 'Build ID ' +env.BUILD_ID
-                echo 'BUILD_NUMBER ' +env.BUILD_NUMBER
-                echo 'BUILD_TAG ' +env.BUILD_TAG
-                echo 'BUILD_URL ' +env.BUILD_URL
-                echo 'EXECUTOR_NUMBER ' +env.EXECUTOR_NUMBER
-                echo 'JAVA_HOME ' +env.JAVA_HOME
-                echo 'JENKINS_URL ' +env.JENKINS_URL
-                echo 'JOB_NAME ' +env.JOB_NAME
-                echo 'NODE_NAME ' +env.NODE_NAME
-                echo 'JOB_NAME ' +env.WORKSPACE
                 bat 'mvn clean package'              
+            }
+        }
+        stage('upload to artifactory'){
+            steps{
+                rtUpload (
+                    serverId: 'jenkins-artifactory-server',
+                    spec: '''{
+                        "files": [
+                            {
+                                "pattern": "./target/*fatca*.jar",
+                                "target": "libs-snapshot/"
+                            }
+                                ]
+                        }''',
+ 
+                    // Optional - Associate the uploaded files with the following custom build name and build number,
+                    // as build artifacts.
+                    // If not set, the files will be associated with the default build name and build number (i.e the
+                    // the Jenkins job name and number).
+                    buildName: 'JFrog',
+                    buildNumber: env.BUILD_NUMBER
+)
             }
         }
         stage('deploy'){
