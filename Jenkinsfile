@@ -28,7 +28,7 @@ stages{
                         "files": [
                             {
                                 "pattern": "./target/*fatca*.jar",
-                                "target": "libs-snapshot/"
+                                "target": "libs-snapshot-local/crest-jar/"
                             }
                                 ]
                         }''',
