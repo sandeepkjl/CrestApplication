@@ -45,7 +45,7 @@ stages{
 		
 		 stage('download from artifactory'){
             steps{
-                rtUpload (
+                rtDownload (
                     serverId: 'jenkins-artifactory-server',
                     spec: '''{
                         "files": [
