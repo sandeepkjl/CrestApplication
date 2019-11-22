@@ -51,7 +51,7 @@ stages{
                         "files": [
                             {
                                 "pattern": "libs-snapshot-local/crest-jar-copy/*fatca*.jar",
-                                "target": "D:\jar"
+                                "target": "D:/jar"
                             }
                                 ]
                         }''',
