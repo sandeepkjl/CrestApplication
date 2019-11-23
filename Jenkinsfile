@@ -8,7 +8,7 @@ stages{
             steps{
                 echo 'initialization...'
 				echo "${DOCKER_USERID}"
-				echo "${DOCKER_PASWWORD}"
+				echo "${DOCKER_PASSWORD}"
             }
         }
         stage('compile'){
